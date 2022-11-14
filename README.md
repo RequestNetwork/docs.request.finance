@@ -9,7 +9,7 @@ Request Portal simplifies the use of the Request protocol, abstracting all the b
 
 Our API accepts JSON-encoded request bodies, returns JSON-encoded responses, and uses standard HTTP response codes and Bearer authentication.
 
-Aside from the guide, you can also consult [the Portal API documentation](/portal).
+Aside from the guide, you can also consult [the Portal API documentation](https://docs.request.network/portal).
 
 ## Authentication
 
@@ -33,9 +33,9 @@ Once your account is created, you are able to:
 ## Request identity
 
 Senders and recipients of money transfer requests need a way to trust each other. The identity is how we certify the debtor about the authenticity of the request sender, limiting frauds like SCAM for example.
-With decentralized integration options (cf. [the Request client](/docs/guides/5-Request-client/0-intro), end users manage their private keys, but the Portal simplifies their life.
+With decentralized integration options (cf. [the Request client](https://docs.request.network/docs/guides/5-Request-client/0-intro), end users manage their private keys, but the Portal simplifies their life.
 
-This simplification should be applied with great care, we do not recommend using the Request Portal API for critical cases where a lot of money or public reputation is at stake. If you want full control over the security of your finance, you should handle your keys, and the same applies to your users. Have a look at [the integration options](/integration-options) to take the best decision.
+This simplification should be applied with great care, we do not recommend using the Request Portal API for critical cases where a lot of money or public reputation is at stake. If you want full control over the security of your finance, you should handle your keys, and the same applies to your users. Have a look at [the integration options](https://docs.request.network/integration-options) to take the best decision.
 
 ## How to list the requests associated with your identity
 
@@ -85,4 +85,4 @@ ReactDOM.render(<RequestsList />, rootElement);
 
 The expected result should be a list of requests with amounts and currencies. Amounts are not displayed in a user-friendly way, but with all the decimals of their currencies.
 
-As you can see, manipulating requests with the Portal API is very straight-forward. What you can notice is the use of `request.requestInput.expectedAmount` and `request.requestInput.currency`. We will detail on the next page how to manipulate different details of the request. You can also have more details on the [Portal API Docs](/portal).
+As you can see, manipulating requests with the Portal API is very straight-forward. What you can notice is the use of `request.requestInput.expectedAmount` and `request.requestInput.currency`. We will detail on the next page how to manipulate different details of the request. You can also have more details on the [Portal API Docs](https://docs.request.network/portal).
