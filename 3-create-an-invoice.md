@@ -88,12 +88,13 @@ In the body part you can use the following example and replace the data accordin
   "buyerInfo": {
     "businessName": "Acme Wholesaler",
     "address": {
-      "country-name": "United States of America",
-      "street-address": "4933 Oakwood Avenue",
-      "extended-address": "",
-      "postal-code": "10038",
+      "streetAddress": "4933 Oakwood Avenue",
+      "extendedAddress": "",
+      "city": "New York",
+      "postalCode": "10038",
       "region": "New York",
-      "locality": "New York"
+      // ISO 3166-1 country code
+      "country": "US"
     },
     "email": "justin.j-ryan@acme-wholesaler.com",
     "firstName": "Justin",
@@ -103,12 +104,13 @@ In the body part you can use the following example and replace the data accordin
   "sellerInfo": {
     "businessName": "Acme TV Seller",
     "address": {
-      "country-name": "United States of America",
-      "street-address": "3521 Park Avenue",
-      "extended-address": "",
-      "postal-code": "00501",
+      "streetAddress": "3521 Park Avenue",
+      "extendedAddress": "",
+      "city": "HOLTSVILLE",
+      "postalCode": "00501",
       "region": "New York",
-      "locality": "HOLTSVILLE"
+      // ISO 3166-1 country code
+      "country-name": "US"
     },
     "email": "william.d-hays@acme-tv-seller.com",
     "firstName": "William",
