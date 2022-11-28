@@ -110,7 +110,7 @@ In the body part you can use the following example and replace the data accordin
       "postalCode": "00501",
       "region": "New York",
       // ISO 3166-1 country code
-      "country-name": "US"
+      "country": "US"
     },
     "email": "william.d-hays@acme-tv-seller.com",
     "firstName": "William",
