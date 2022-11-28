@@ -1,63 +1,58 @@
 ---
 title: Invoice API - Introduction
-keywords: [ERC20, DAI, Request, Invoice, Portal, API, Request Finance]
+keywords:
+  - ERC20
+  - DAI
+  - Request
+  - Invoice
+  - Portal
+  - API
+  - Request Finance
 description: Learn how to use Request's invoice API.
 ---
 
-## Request vs. Invoice, How Do They Differ?
+# Invoice API - Introduction
 
-You are now familiar with the [Request API](./1-create-and-share-request.md),
-but did you know you could also create, on Portal, invoices which supersede requests?
+### Request vs Invoice, How Do They Differ?
 
-Invoices are simply an implementation of requests with a predefined schema for the `contentData` property.
-Invoices are mainly used by the [Request Finance](https://app.request.finance/) application
-as a way to practically represent general invoicing data.
+Invoices are simply an implementation of requests with a predefined schema for the `contentData` property. Invoices are mainly used by the [Request Finance](https://app.request.finance/) application as a way to represent general invoicing data practically.
 
-Invoice API also differ by the layer of automation added on top of Request API.
-Whenever an invoice is created, it is possible to have an email sent to the designated payer.
-The invoice issuer (payee) can also get notified as soon as the corresponding request has been paid
-(please [contact us](https://www.request.finance/contact-us) if you need more info on this feature).
+Invoice API also differ by the layer of automation added on top of Request API. Whenever an invoice is created, it is possible to have an email sent to the designated payer. The invoice issuer (payee) can also get notified as soon as the corresponding request has been paid (please [contact us](https://www.request.finance/contact-us) if you need more info on this feature).
 
-Knowing if a Request has been paid [is not trivial](./2-payment-status.md).
-But invoices have an additional property: a `status`
-; so knowing if the underlying Request has been paid is as easy as reading this property.
+Knowing if a Request has been paid [is not trivial](2-payment-status.md). But invoices have an additional property: a `status` ; so knowing if the underlying Request has been paid is as easy as reading this property.
 
-Invoices can also be scheduled to create occurrences at regular intervals.
-This is useful to manage collaborators salaries.
+Invoices can also be scheduled to create occurrences at regular intervals. This is useful for managing collaborators' salaries.
 
 To summarize:
 
-|                     |                Request                 |                               Invoice                               |
-| ------------------- | :------------------------------------: | :-----------------------------------------------------------------: |
-| Portal API endpoint |              `/requests`               |                             `/invoices`                             |
-| Schema              | `contentData`<br/>not validated by API | Invoices extend requests<br/> `contentData` schema validated by API |
-| Automation          |                   ✖️                   |                                 ✔ ️                                 |
-| Recurrence          |                   ✖️                   |                                  ✔                                  |
+|                     |                         Request                         |                                       Invoice                                       |
+| ------------------- | :-----------------------------------------------------: | :---------------------------------------------------------------------------------: |
+| Portal API endpoint |                       `/requests`                       |                                     `/invoices`                                     |
+| Schema              | <p><code>contentData</code><br>not validated by API</p> | <p>Invoices extend requests<br><code>contentData</code> schema validated by API</p> |
+| Automation          |                            ✖️                           |                                         ✔ ️                                         |
+| Recurrence          |                            ✖️                           |                                          ✔                                          |
 
-## Introduction
+### Introduction
 
-In this tutorial we will learn how to use the invoice API to create off-chain invoices,
-and then transform those invoices into on-chain requests.
+In this tutorial, we will learn how to use the invoice API to create off-chain invoices and then transform those invoices into on-chain requests.
 
-Please follow the [Portal Introduction](./README.md) to retrieve an API key.
-Reminder: all HTTP requests must include the following headers:
+Please follow the [Portal Introduction](./) to retrieve an API key. Reminder: all HTTP requests must include the following headers:
 
-- `Accept: application/json`
-- `Content-Type: application/json`
-- `Authorization: [YOUR_API_KEY]`
+* `Accept: application/json`
+* `Content-Type: application/json`
+* `Authorization: [YOUR_API_KEY]`
 
-The Authorization header is used to authenticate yourself.
-Please replace `[YOUR_API_KEY]` with the previously retrieved key.
+The Authorization header is used to authenticate yourself. Please replace `[YOUR_API_KEY]` with the previously retrieved key.
 
-## Create a Request With Invoice API
+### Create a Request With Invoice API
 
-### Create an Off-Chain Invoice
+#### Create an Off-Chain Invoice
 
 Use the following endpoint first to create an off-chain invoice that will later be converted to an on-chain Request:
 
 `POST https://api.request.network/invoices`
 
-In the body part you can use the following example and replace the data accordingly:
+In the body part, you can use the following example and replace the data accordingly:
 
 ```json
 {
@@ -78,7 +73,7 @@ In the body part you can use the following example and replace the data accordin
       },
       // "unitPrice" is the price of one item excluding taxes
       // Here it means the price of one TV is $99.99
-      // The total per item will be $119.99 including taxes, and the whole total will be $239.98
+      // The total per item will be $119.99, including taxes, and the whole sum will be $239.98
       "unitPrice": "9999"
     }
   ],
@@ -128,10 +123,9 @@ In the body part you can use the following example and replace the data accordin
 }
 ```
 
-In the JSON response you will get an `id` field. Please save it in a variable or in your database.
-You will need it in the next section.
+In the JSON response, you will get an `id` field. Please save it in a variable or in your database. You will need it in the next section.
 
-### Convert the Off-Chain Invoice Into an On-Chain Request
+#### Convert the Off-Chain Invoice Into an On-Chain Request
 
 Use the following endpoint to convert the previously created off-chain invoice to an on-chain Request:
 
@@ -141,41 +135,34 @@ Use the following endpoint to convert the previously created off-chain invoice t
 
 You don't need to pass anything in the request body this time.
 
-In the JSON response you will get a `requestId` field.
-This is the ID of the newly created Request.
-Please save it in your database as you will need it to be informed of when the Request has been paid.
+In the JSON response, you will get a `requestId` field. This is the ID of the newly created Request. Please save it in your database, as you will need it to be informed of when the Request has been paid.
 
-### Know When the Request Has Been Paid
+#### Know When the Request Has Been Paid
 
-In order to be informed as to when the payer has fulfilled the Request you need to poll our API regularly.
+To be informed when the payer has fulfilled the Request, you must poll our API regularly.
 
 Please use the following endpoint to retrieve the status of the Request:
 
-`GET https://api.request.network/invoices/[id] `
+`GET https://api.request.network/invoices/[id]`
 
 Replace `[id]` with the ID of the invoice, or the ID of the Request `requestId`.
 
-You can check the `status` field of the
-JSON response. The different statuses of an invoice are the following:
+You can check the `status` field of the JSON response. The different statuses of an invoice are the following:
 
-- `draft`
-- `pending`
-- `scheduled`
-- `open`
-- `accepted`
-- `rejected`
-- `declaredPaid`
-- `paid`
-- `canceled`
+* `draft`
+* `pending`
+* `scheduled`
+* `open`
+* `accepted`
+* `rejected`
+* `declaredPaid`
+* `paid`
+* `canceled`
 
-After creating the Request with the previously described process you should end-up with a `pending` status
-while the Request is being created on-chain (as this process is asynchronous),
-followed by an `open` status after the Request has actually been created.
+After creating the Request with the previously described process, you should end up with a `pending` status while the Request is being created on-chain (as this process is asynchronous), followed by an `open` status after the Request has actually been created.
 
 You can use the value `paid` to classify the Request as "fulfilled" and stop polling for a new status.
 
-When the value matches `rejected` or `canceled` you can also stop polling because
-it means that the Request has been manually canceled out by the payer (or the payee via it's interface),
-and thus will not get paid.
+When the value matches `rejected` or `canceled` you can also stop polling because it means that the Request has been manually cancelled out by the payer (or the payee via its interface) and thus will not get paid.
 
 You should also terminate the polling process if the current date exceeds `paymentTerms.dueDate` value.
