@@ -2,7 +2,7 @@
 description: Learn how to integrate the Request Finance API and its features.
 ---
 
-# Create your first Invoice
+# Create your first invoice
 
 In this tutorial, we will learn how to use the Request Finance API to create off-chain invoices and then transform those invoices into on-chain requests.
 
@@ -14,7 +14,7 @@ Please follow the [Introduction](introduction.md) to retrieve an API key. Remind
 
 The Authorization header is used to authenticate yourself. Please replace `[YOUR_API_KEY]` with the previously retrieved key.
 
-### Request vs. Invoice, How Do They Differ?
+### Request vs. Invoice, how do they differ?
 
 The Request Network protocol is all about creating payment requests. They are stored on-chain: data is stored on IPFS, and the document hash is persisted on-chain
 
@@ -28,15 +28,15 @@ Invoices can also be scheduled to create occurrences at regular intervals. This 
 
 To summarize:
 
-|            |                  Request (protocol level)                  |                                 Invoice (API level)                                 |
-| ---------- | :--------------------------------------------------------: | :---------------------------------------------------------------------------------: |
-| Schema     | <p><code>contentData</code><br>not validated by an API</p> | <p>Invoices extend requests<br><code>contentData</code> schema validated by API</p> |
-| Automation |                             ✖️                             |                                         ✔ ️                                         |
-| Recurrence |                             ✖️                             |                                          ✔                                          |
+| Differences |               Request (protocol level)               |                           Invoice (API level)                           |
+| ----------- | :--------------------------------------------------: | :---------------------------------------------------------------------: |
+| Schema      | <p><code>contentData</code><br>can be any object</p> | `contentData` represents an invoice, the schema is validated by the API |
+| Automation  |                          ✖️                          |                                   ✔ ️                                   |
+| Recurrence  |                          ✖️                          |                                    ✔                                    |
 
-## Create an Invoice with the Request Finance API
+## Create an invoice with the Request Finance API
 
-#### Create an Off-Chain Invoice
+#### Create an off-chain invoice
 
 Use the following endpoint first to create an off-chain invoice that will later be converted to an on-chain request:
 
@@ -117,7 +117,7 @@ In the body part, you can use the following example and replace the data accordi
 
 In the JSON response, you will get an `id` field. Please save it in a variable or in your database. You will need it in the next section.
 
-#### Convert the Off-Chain Invoice to an On-Chain Request
+#### Convert the off-chain Invoice to an on-chain request
 
 Use the following endpoint to convert the previously created off-chain invoice to an on-chain request:
 
@@ -129,7 +129,7 @@ You don't need to pass anything in the request body this time.
 
 In the JSON response, you will get a `requestId` field. This is the ID of the newly created request. Please save it in your database, as you will need it to be informed of when the request has been paid.
 
-#### Know When the Request Has Been Paid
+#### Know when the request has been paid
 
 To be informed when the payer has fulfilled the request, you must poll our API regularly.
 

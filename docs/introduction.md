@@ -16,12 +16,12 @@ Aside from the guide, you can also consult the [OpenAPI specifications](http://r
 
 All API endpoints are authenticated. Two mechanisms are currently allowed:
 
-* API keys, explained below, are great to quickly start working on your project.
+* API keys (explained below) which are great to start working on your project quickly.
 * With OAuth, more secure and suitable for production. Please [reach out](https://www.request.finance/contact-us) when you're ready to make the switch.
 
-### API Keys
+### API keys
 
-If you have not already done it, head towards [Request Finance](https://app.request.finance) and create your account.\
+If you have not already done it, head toward [Request Finance](https://app.request.finance) and create your account.\
 You can find your API keys in the ["developer" section](https://app.request.finance/account/api-keys).
 
 ### API URL
