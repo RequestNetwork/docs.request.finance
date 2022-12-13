@@ -28,15 +28,17 @@ You can find your API keys in the ["developer" section](https://app.request.fina
 
 There is only one API URL: [https://api.request.network/](https://api.request.network/) ; but you own two API keys.
 
-* When using the "Test" API key, invoices will be persisted on Goerli, and you will be able to see them on the staging front-end.
+* When using the "Test" API key, invoices will be persisted on Goerli, and you will be able to see them on the staging front end.
 * When using the "Live" API key, invoices will be persisted on Gnosis Chain, and you will be able to see them on the production front end.
+
+Please use the "Test" API key whenever you create fake data.
 
 ### Front-end
 
-* [https://app.request.finance](https://app.request.finance/) is our production front-end
-* [https://baguette-app.request.finance](https://baguette-app.request.finance/) is our staging front-end
+* [https://app.request.finance](https://app.request.finance/) is our production front end
+* [https://baguette-app.request.finance](https://baguette-app.request.finance/) is our staging front end
 
-Please use the "Test" API key whenever you create fake data. You can access the staging front-end with the same account that you use on the production environment.
+You can access the staging front end with the same account that you use on the production environment.
 
 ### Storage
 
