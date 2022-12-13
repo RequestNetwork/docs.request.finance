@@ -1,2 +1,4 @@
-This repository contains the content of https://docs.request.finance/ which is hosted on GitBook.
+# docs.request.finance
+
+GitBook-hosted content for [docs.request.finance](https://docs.request.finance/).
 Contributions are welcomed!
