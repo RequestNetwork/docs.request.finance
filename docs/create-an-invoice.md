@@ -36,7 +36,7 @@ To summarize:
 
 ## Create an invoice with the Request Finance API
 
-#### Create an off-chain invoice
+### Create an off-chain invoice
 
 Use the following endpoint first to create an off-chain invoice that will later be converted to an on-chain request:
 
@@ -117,7 +117,7 @@ In the body part, you can use the following example and replace the data accordi
 
 In the JSON response, you will get an `id` field. Please save it in a variable or in your database. You will need it in the next section.
 
-#### Convert the off-chain Invoice to an on-chain request
+### Convert the off-chain Invoice to an on-chain request
 
 Use the following endpoint to convert the previously created off-chain invoice to an on-chain request:
 
@@ -129,7 +129,7 @@ You don't need to pass anything in the request body this time.
 
 In the JSON response, you will get a `requestId` field. This is the ID of the newly created request. Please save it in your database, as you will need it to be informed of when the request has been paid.
 
-#### Know when the request has been paid
+### Know when the request has been paid
 
 To be informed when the payer has fulfilled the request, you must poll our API regularly.
 
