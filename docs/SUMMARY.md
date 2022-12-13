@@ -1,7 +1,5 @@
 # Table of contents
 
-## Table of contents
-
 * [Context](context.md)
 * [Introduction](introduction.md)
 * [Create your first invoice](create-an-invoice.md)
