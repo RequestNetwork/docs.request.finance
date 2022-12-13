@@ -18,8 +18,8 @@ The Request Finance API is the backend of the Request Finance application. It is
 * No key management
 * Faster response time
 * Notifications on new requests and received payments
-* Sends invoices to users based on their email instead of their ETH address.
-* Easy to build applications on top of Request with OAuth
+* Sends invoices to users based on their email instead of their ETH address
+* Easy to build applications on top of the Request Network with OAuth
 * The easy choice for encrypted data on the network
 
 ### Request Finance API - Cons
