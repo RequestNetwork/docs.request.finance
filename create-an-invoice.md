@@ -1,13 +1,4 @@
 ---
-title: Invoice API - Introduction
-keywords:
-  - ERC20
-  - DAI
-  - Request
-  - Invoice
-  - Portal
-  - API
-  - Request Finance
 description: Learn how to integrate the Request Finance API and its features.
 ---
 
@@ -15,7 +6,7 @@ description: Learn how to integrate the Request Finance API and its features.
 
 In this tutorial, we will learn how to use the Request Finance API to create off-chain invoices and then transform those invoices into on-chain requests.
 
-Please follow the [API Introduction](<README (1).md>) to retrieve an API key. Reminder: all HTTP requests must include the following headers:
+Please follow the [Introduction](introduction.md) to retrieve an API key. Reminder: all HTTP requests must include the following headers:
 
 * `Accept: application/json`
 * `Content-Type: application/json`
