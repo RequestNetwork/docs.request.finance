@@ -14,7 +14,7 @@ Please follow the [Introduction](introduction.md) to retrieve an API key. Remind
 
 The Authorization header is used to authenticate yourself. Please replace `[YOUR_API_KEY]` with the previously retrieved key.
 
-### Request vs. Invoice, how do they differ?
+## Requests vs. Invoices, how do they differ?
 
 The Request Network protocol is all about creating payment requests. They are stored on-chain: data is stored on IPFS, and the document hash is persisted on-chain
 
