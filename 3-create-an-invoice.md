@@ -8,35 +8,14 @@ keywords:
   - Portal
   - API
   - Request Finance
-description: Learn how to use Request's invoice API.
+description: Learn how to integrate the Request Finance API and its features.
 ---
 
-# Invoice API - Introduction
+# Create your first Invoice
 
-### Request vs Invoice, How Do They Differ?
+In this tutorial, we will learn how to use the Request Finance API to create off-chain invoices and then transform those invoices into on-chain requests.
 
-Invoices are simply an implementation of requests with a predefined schema for the `contentData` property. Invoices are mainly used by the [Request Finance](https://app.request.finance/) application as a way to represent general invoicing data practically.
-
-Invoice API also differ by the layer of automation added on top of Request API. Whenever an invoice is created, it is possible to have an email sent to the designated payer. The invoice issuer (payee) can also get notified as soon as the corresponding request has been paid (please [contact us](https://www.request.finance/contact-us) if you need more info on this feature).
-
-Knowing if a Request has been paid [is not trivial](2-payment-status.md). But invoices have an additional property: a `status` ; so knowing if the underlying Request has been paid is as easy as reading this property.
-
-Invoices can also be scheduled to create occurrences at regular intervals. This is useful for managing collaborators' salaries.
-
-To summarize:
-
-|                     |                         Request                         |                                       Invoice                                       |
-| ------------------- | :-----------------------------------------------------: | :---------------------------------------------------------------------------------: |
-| Portal API endpoint |                       `/requests`                       |                                     `/invoices`                                     |
-| Schema              | <p><code>contentData</code><br>not validated by API</p> | <p>Invoices extend requests<br><code>contentData</code> schema validated by API</p> |
-| Automation          |                            ✖️                           |                                         ✔ ️                                         |
-| Recurrence          |                            ✖️                           |                                          ✔                                          |
-
-### Introduction
-
-In this tutorial, we will learn how to use the invoice API to create off-chain invoices and then transform those invoices into on-chain requests.
-
-Please follow the [Portal Introduction](./) to retrieve an API key. Reminder: all HTTP requests must include the following headers:
+Please follow the [API Introduction](<README (1).md>) to retrieve an API key. Reminder: all HTTP requests must include the following headers:
 
 * `Accept: application/json`
 * `Content-Type: application/json`
@@ -44,11 +23,31 @@ Please follow the [Portal Introduction](./) to retrieve an API key. Reminder: al
 
 The Authorization header is used to authenticate yourself. Please replace `[YOUR_API_KEY]` with the previously retrieved key.
 
-### Create a Request With Invoice API
+### Request vs. Invoice, How Do They Differ?
+
+The Request Network protocol is all about creating payment requests. They are stored on-chain: data is stored on IPFS, and the document hash is persisted on-chain
+
+Invoices are what you will be manipulating with the Request Finance API. Invoices are simply an implementation of requests with a predefined schema for their content. Invoices are used by the [Request Finance](https://app.request.finance/) application as a way to practically represent general invoicing data.
+
+The Request Finance API adds a layer of automation on top of simple requests. Whenever an invoice is created, it is possible to have an email sent to the designated payer. The invoice issuer (payee) can also get notified as soon as the corresponding request has been paid (please [get in touch with us](https://www.request.finance/contact-us) if you need access to this API feature).
+
+Knowing if a request has been paid [is not trivial](https://github.com/RequestNetwork/requestNetwork/blob/master/packages/docs/docs/guides/3-Portal-API/2-payment-status.md). But invoices have an additional property: a `status` ; so knowing if the underlying request has been paid is as easy as reading this property.
+
+Invoices can also be scheduled to create occurrences at regular intervals. This is useful to manage collaborators salaries.
+
+To summarize:
+
+|            |                  Request (protocol level)                  |                                 Invoice (API level)                                 |
+| ---------- | :--------------------------------------------------------: | :---------------------------------------------------------------------------------: |
+| Schema     | <p><code>contentData</code><br>not validated by an API</p> | <p>Invoices extend requests<br><code>contentData</code> schema validated by API</p> |
+| Automation |                             ✖️                             |                                         ✔ ️                                         |
+| Recurrence |                             ✖️                             |                                          ✔                                          |
+
+## Create an Invoice with the Request Finance API
 
 #### Create an Off-Chain Invoice
 
-Use the following endpoint first to create an off-chain invoice that will later be converted to an on-chain Request:
+Use the following endpoint first to create an off-chain invoice that will later be converted to an on-chain request:
 
 `POST https://api.request.network/invoices`
 
@@ -127,9 +126,9 @@ In the body part, you can use the following example and replace the data accordi
 
 In the JSON response, you will get an `id` field. Please save it in a variable or in your database. You will need it in the next section.
 
-#### Convert the Off-Chain Invoice Into an On-Chain Request
+#### Convert the Off-Chain Invoice to an On-Chain Request
 
-Use the following endpoint to convert the previously created off-chain invoice to an on-chain Request:
+Use the following endpoint to convert the previously created off-chain invoice to an on-chain request:
 
 `POST https://api.request.network/invoices/[id]`
 
@@ -137,13 +136,13 @@ Use the following endpoint to convert the previously created off-chain invoice t
 
 You don't need to pass anything in the request body this time.
 
-In the JSON response, you will get a `requestId` field. This is the ID of the newly created Request. Please save it in your database, as you will need it to be informed of when the Request has been paid.
+In the JSON response, you will get a `requestId` field. This is the ID of the newly created request. Please save it in your database, as you will need it to be informed of when the request has been paid.
 
 #### Know When the Request Has Been Paid
 
-To be informed when the payer has fulfilled the Request, you must poll our API regularly.
+To be informed when the payer has fulfilled the request, you must poll our API regularly.
 
-Please use the following endpoint to retrieve the status of the Request:
+Please use the following endpoint to retrieve the status of the request:
 
 `GET https://api.request.network/invoices/[id]`
 
@@ -161,10 +160,10 @@ You can check the `status` field of the JSON response. The different statuses of
 * `paid`
 * `canceled`
 
-After creating the Request with the previously described process, you should end up with a `pending` status while the Request is being created on-chain (as this process is asynchronous), followed by an `open` status after the Request has actually been created.
+After creating the request with the previously described process, you should end up with a `pending` status while the request is being persisted on-chain (this process is asynchronous), followed by an `open` status once the request is actually created.
 
 You can use the value `paid` to classify the Request as "fulfilled" and stop polling for a new status.
 
-When the value matches `rejected` or `canceled` you can also stop polling because it means that the Request has been manually cancelled out by the payer (or the payee via its interface) and thus will not get paid.
+When the value matches `rejected` or `canceled` you can also stop polling: it means that the request has been manually canceled out by the payer or the payee respectively, and thus will not get paid.
 
 You should also terminate the polling process if the current date exceeds `paymentTerms.dueDate` value.
