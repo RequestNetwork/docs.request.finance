@@ -8,7 +8,9 @@ Request Finance API simplifies the use of the Request Network protocol, abstract
 
 Our API accepts JSON-encoded bodies, returns JSON-encoded responses, and uses standard HTTP response codes and Bearer authentication.
 
+<!-- TODO: uncomment once ready to use
 Aside from the guide, you can also consult the [OpenAPI specifications](http://redocly.github.io/redoc/?url=https://api.request.network/spec/openapi.yml).
+-->
 
 ## How to work with the Request Finance API?
 
