@@ -8,10 +8,6 @@ Request Finance API simplifies the use of the Request Network protocol, abstract
 
 Our API accepts JSON-encoded bodies, returns JSON-encoded responses, and uses standard HTTP response codes and Bearer authentication.
 
-<!-- TODO: uncomment once ready to use
-Aside from the guide, you can also consult the [OpenAPI specifications](http://redocly.github.io/redoc/?url=https://api.request.network/spec/openapi.yml).
--->
-
 ## How to work with the Request Finance API?
 
 ### Authentication
@@ -52,3 +48,7 @@ Invoices are stored on the blockchain: data is stored on IPFS, and the document 
 ### Payment
 
 When you create an invoice on the staging front end, you can test payments without spending real tokens. We replace the selected ERC20 payment currency with the FAU token. You can mint some FAU tokens at [https://erc20faucet.com/](https://erc20faucet.com/).
+
+### Postman collection
+
+Please visit our [Postman collection](https://www.postman.com/request-finance/workspace/request-finance-api-public/documentation/24913360-b5105a65-a6bd-4247-b3b1-ed60e5c8f5cb) for more details and to try out the API.
