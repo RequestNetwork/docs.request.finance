@@ -40,7 +40,7 @@ You can access the staging front end with the same account that you use on the p
 
 ### Storage
 
-Invoices are stored on the blockchain: data is stored on IPFS, and the document hash is persisted on-chain—[more info on this](https://docs.request.network/docs/guides/7-protocol/6-request-ipfs-network).
+Invoices are stored on the blockchain: data is stored on IPFS, and the document hash is persisted on-chain—[more info on this](https://docs.request.network/docs/guides/1-protocol/4-storage).
 
 * Invoices created with the production environment are persisted on the Gnosis Chain.
 * Invoices created on the staging environment are persisted on Goerli.
