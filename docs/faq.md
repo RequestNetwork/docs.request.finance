@@ -21,7 +21,6 @@ The Request Finance API is the backend of the Request Finance application. It is
 
 * Not fully decentralized
 * Users need a Request Finance account to connect
-* Encryption is not end-to-end (see [here](faq.md#how-is-data-encrypted))
 
 ### **Where are invoices stored?**&#x20;
 
