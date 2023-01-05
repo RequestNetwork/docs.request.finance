@@ -1,29 +1,12 @@
----
-description: Learn how to integrate the Request Finance API and its features.
----
+# Welcome
 
-# Context
+The Request Finance API allows you to scale your web3 operations without the complexity of dealing with blockchains and smart contracts.&#x20;
 
-## Request Finance API vs. Request Network protocol
+With the API you can:
 
-The Request Network is a [decentralized protocol](https://github.com/RequestNetwork/requestNetwork) built on Ethereum for creating payment requests. It is maintained by the Request Network Foundation.
+* Issue invoices and accept payments in cryptocurrency from your customers
+* Track the status of your crypto invoices without polling blockchains
 
-Request Finance is a commercial (centralized) application that interacts with the Request Network protocol. It is a product of the Request Labs company.
-
-The Request Finance API is the backend of the Request Finance application. It is an abstraction over the Request Network protocol for easy but centralized access. It's the fastest way to integrate Request into your product.
-
-### Request Finance API - Pros
-
-* Simple REST API, familiar to web developers
-* No key management
-* Faster response time
-* Notifications on new requests and received payments
-* Sends invoices to users based on their email instead of their ETH address
-* Easy to build applications on top of the Request Network with OAuth
-* The easy choice for encrypted data on the network
-
-### Request Finance API - Cons
-
-* Not fully decentralized
-* Users need a Request Finance account to connect
-* Encryption is not end-to-end (see [here](encryption.md))
+{% hint style="info" %}
+The backbone of the Request Finance API is the Request Network. The Request Network is a decentralized protocol built on Ethereum and maintained by the Request Foundation. For more information on the two relate to each other, please visit [this page](faq.md#what-is-the-relation-between-the-request-finance-api-and-the-request-network).
+{% endhint %}

@@ -1,54 +1,26 @@
----
-description: Learn how to integrate the Request Finance API and its features.
----
+# Getting Started
 
-# Introduction
+The Request API is organized around REST. It accepts JSON-encoded bodies, returns JSON-encoded responses, and uses standard HTTP response codes and Bearer authentication.
 
-Request Finance API simplifies the use of the Request Network protocol, abstracting all the blockchain complexity. You can create and manage your invoices through a REST API.
+To get started you need an API key. If you have not already done, go to [Request Finance](https://app.request.finance) and create your account for free. You can find your API keys in the ["Developer" tab](https://app.request.finance/account/api-keys) in “Settings”.&#x20;
 
-Our API accepts JSON-encoded bodies, returns JSON-encoded responses, and uses standard HTTP response codes and Bearer authentication.
+## Authentication
 
-## How to work with the Request Finance API?
+All API endpoints are authenticated. The API supports two modes of authentication:&#x20;
 
-### Authentication
+* Using API keys which are great to start working on your project quickly.
+* Using OAuth which is more secure and suitable for production. Please [reach out](https://www.request.finance/contact-us) when you're ready to make the switch.
 
-All API endpoints are authenticated. Two mechanisms are currently allowed:
+## Base URL
 
-* API keys (explained below) which are great to start working on your project quickly.
-* With OAuth, more secure and suitable for production. Please [reach out](https://www.request.finance/contact-us) when you're ready to make the switch.
+When using the Request Finance API, please use this URL: [https://api.request.network/](https://api.request.network/).&#x20;
 
-### API keys
+## Header
 
-If you have not already done it, head toward [Request Finance](https://app.request.finance) and create your account.\
-You can find your API keys in the ["developer" section](https://app.request.finance/account/api-keys).
+All HTTP requests must include the following headers:
 
-### API URL
+* `Accept: application/json`
+* `Content-Type: application/json`
+* `Authorization: [YOUR_API_KEY]`
 
-There is only one API URL: [https://api.request.network/](https://api.request.network/) ; but you own two API keys.
-
-* When using the "Test" API key, invoices will be persisted on Goerli, and you will be able to see them on the staging front end.
-* When using the "Live" API key, invoices will be persisted on Gnosis Chain, and you will be able to see them on the production front end.
-
-Please use the "Test" API key whenever you create fake data.
-
-### Front-end
-
-* [https://app.request.finance](https://app.request.finance/) is our production front end
-* [https://baguette-app.request.finance](https://baguette-app.request.finance/) is our staging front end
-
-You can access the staging front end with the same account that you use on the production environment.
-
-### Storage
-
-Invoices are stored on the blockchain: data is stored on IPFS, and the document hash is persisted on-chain—[more info on this](https://docs.request.network/docs/guides/1-protocol/4-storage).
-
-* Invoices created with the production environment are persisted on the Gnosis Chain.
-* Invoices created on the staging environment are persisted on Goerli.
-
-### Payment
-
-When you create an invoice on the staging front end, you can test payments without spending real tokens. We replace the selected ERC20 payment currency with the FAU token. You can mint some FAU tokens at [https://erc20faucet.com/](https://erc20faucet.com/).
-
-### Postman collection
-
-Please visit our [Postman collection](https://www.postman.com/request-finance/workspace/request-finance-api-public/documentation/24913360-b5105a65-a6bd-4247-b3b1-ed60e5c8f5cb) for more details and to try out the API.
+The Authorization header is used to authenticate yourself. Please replace `[YOUR_API_KEY]` with your API key.&#x20;
