@@ -13,7 +13,7 @@ All API endpoints are authenticated. The API supports two modes of authenticatio
 
 ## Base URL
 
-When using the Request Finance API, please use this URL: [https://api.request.network/](https://api.request.network/).&#x20;
+When using the Request Finance API, please use this URL: [https://api.request.finance/](https://api.request.finance/).&#x20;
 
 ## Header
 

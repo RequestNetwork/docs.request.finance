@@ -12,7 +12,7 @@ The Request Network protocol is all about creating payment requests. They are st
 
 #### **Request**
 
-`POST https://api.request.network/invoices`
+`POST https://api.request.finance/invoices`
 
 #### **Attributes**
 
@@ -39,7 +39,7 @@ The Request Network protocol is all about creating payment requests. They are st
 | buyerInfo.taxRegistration         | Optional. Tax registration number of the buyer.                                                                                                                                                                                                                                                                                                                                                        | String                                        |
 | paymentTerms.dueDate              | Optional. ISO-8601 due date of the invoice. Last date the buyer can pay.                                                                                                                                                                                                                                                                                                                               | String                                        |
 | paymentAddress                    | Address which will receive the payment.                                                                                                                                                                                                                                                                                                                                                                | String                                        |
-| paymentCurrency                   | Currency in which the invoice can be paid. Please review our [Currency API](https://api.request.network/currency/list/invoicing) for a list of  available currencies.                                                                                                                                                                                                                                  | String                                        |
+| paymentCurrency                   | Currency in which the invoice can be paid. Please review our [Currency API](https://api.request.finance/currency/list/invoicing) for a list of  available currencies.                                                                                                                                                                                                                                  | String                                        |
 | tags                              | Optional. One or multiple tags for an invoice.                                                                                                                                                                                                                                                                                                                                                         | Array of strings                              |
 
 #### **Example Request**
@@ -105,7 +105,7 @@ To make an invoice payable, it must be converted to an on-chain request. Once th
 
 #### **Request**
 
-`POST https://api.request.network/invoices/[id]`
+`POST https://api.request.finance/invoices/[id]`
 
 In the JSON response, you will get a `requestId` field. This is the ID of the newly created request. Please save it in your database, as you will need it to be informed of when the request has been paid. You may use this value in place of the `invoiceId` for future HTTP requests.
 
@@ -115,7 +115,7 @@ To check the status of an invoice and understand if it has been paid, please pol
 
 #### Request
 
-`GET https://api.request.network/invoices/[id]`
+`GET https://api.request.finance/invoices/[id]`
 
 You can check the `status` field of the JSON response. The different statuses of an invoice are the following:
 

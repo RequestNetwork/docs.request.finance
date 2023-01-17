@@ -10,7 +10,7 @@ Creating an off-chain salary payment is done via the same [endpoint that is used
 
 **Request**
 
-`POST https://api.request.network/invoices`
+`POST https://api.request.finance/invoices`
 
 #### **Attributes**
 
