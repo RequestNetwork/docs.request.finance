@@ -134,3 +134,9 @@ You can use the value `paid` to classify the Request as "fulfilled" and stop pol
 When the value matches `rejected` or `canceled` you can also stop polling: it means that the request has been manually canceled out by the payer or the payee respectively, and thus will not get paid.
 
 You should also terminate the polling process if the current date exceeds `paymentTerms.dueDate`.
+
+## Fetching invoices by transaction hash
+
+`GET https://api.request.finance/invoices?format=paginated&search=TX_HASH&variant=rnf_invoice`
+
+This will return invoices with payments part of the transaction. There are many results if payments were batched together.
