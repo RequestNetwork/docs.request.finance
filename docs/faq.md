@@ -53,4 +53,20 @@ With the Request Finance API, everything that is stored on-chain is encrypted on
 
 Although we technically have access to invoice data, we will never use or share this data.&#x20;
 
-If end-to-end encryption is paramount for your usage, we recommend you interact directly with the Request Network protocol through the[ Request Client](https://docs.request.network/docs/guides/2-request-client/0-intro) instead of using the Request Finance API. You won't be able however to interact with invoices stored on[ app.request.finance](https://app.request.finance).\
+If end-to-end encryption is paramount for your usage, we recommend you interact directly with the Request Network protocol through the[ Request Client](https://docs.request.network/docs/guides/2-request-client/0-intro) instead of using the Request Finance API. You won't be able however to interact with invoices stored on[ app.request.finance](https://app.request.finance).
+
+### **What rate limits do you have on the API?**&#x20;
+
+The following rate limits apply globally:&#x20;
+
+* Unauthenticated users: 500 calls / hour
+* Authenticated users: 5000 calls / hour
+* Applications using [OAuth authentication](https://docs.request.finance/getting-started#authentication): 15000 calls / hour
+
+Additionally, there are some endpoints that have stricter rate limiting. The API always returns the following information in the headers:&#x20;
+
+* `X-Rate-Limit-Limit`: the rate limit ceiling for that given endpoint
+* `X-Rate-Limit-Remaining`: the number of requests left for that given endpoint
+* `X-Rate-Limit-Reset`: the remaining time window before the rate limit resets, in seconds
+
+We also send a `Retry-After` in the header on blocked requests to let you know when to call then endpoint again.&#x20;
