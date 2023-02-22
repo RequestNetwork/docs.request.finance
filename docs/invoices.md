@@ -456,6 +456,14 @@ To check the status of an invoice and understand if it has been paid, please pol
 ID of the request or invoice
 {% endswagger-parameter %}
 
+{% swagger-parameter in="query" name="withLinks=true" type="String" %}
+Includes "Share" and "Payment links" in the response. See 
+
+[https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
+
+
+{% endswagger-parameter %}
+
 {% swagger-response status="200: OK" description="" %}
 ```json
 {
@@ -617,6 +625,14 @@ Filter by invoice format. Use
 
 
 Example: variant=meta.format
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" type="String" name="withLinks=true" %}
+Includes "Share" and "Payment links" in the response. See 
+
+[https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
+
+
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
