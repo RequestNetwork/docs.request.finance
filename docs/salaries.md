@@ -105,6 +105,16 @@ Currency in which the payroll payment can be paid. Please review our
  for a list of available currencies.
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" type="String" name="recurringRule" %}
+Used to create a recurring payment. Input as defined by the [ical RFC](https://www.rfc-editor.org/rfc/rfc5545). Recommended tool: [https://jakubroztocil.github.io/rrule/](https://jakubroztocil.github.io/rrule/). \
+\
+Example:&#x20;
+
+DTSTART:20230314T085800Z RRULE:FREQ=MONTHLY;INTERVAL=1\
+\
+Monthly on the 14th of each month, starting 14th of March 2023.&#x20;
+{% endswagger-parameter %}
+
 {% swagger-response status="201: Created" description="Off-chain payment successfully created" %}
 ```json
 {
