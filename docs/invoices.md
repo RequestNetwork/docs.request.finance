@@ -861,7 +861,7 @@ Includes "Share" and "Payment links" in the response. See
   Only `open` and `accepted` invoices can be canceled.
 * _As a buyer_, you cannot cancel an invoice. Once a seller cancels an invoice, it will show up in the ["Rejected" tab of the "Get paid" menu](https://app.request.finance/pay/bills?f=voided).
 
-{% swagger method="post" path="/invoices/[id]/changes" baseUrl="https://api.request.finance" summary="Approve, reject or cancel and invoice" %}
+{% swagger method="post" path="/invoices/[id]/changes" baseUrl="https://api.request.finance" summary="Approve, reject or cancel an invoice" %}
 {% swagger-description %}
 
 {% endswagger-description %}
