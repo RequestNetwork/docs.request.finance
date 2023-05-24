@@ -902,7 +902,7 @@ The type of change. Use
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="input.note" type="String" required="true" %}
-Include a rejection reason. 
+Required when rejecting an invoice. Include a rejection reason. 
 
 \
 
