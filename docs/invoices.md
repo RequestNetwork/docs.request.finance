@@ -859,7 +859,7 @@ Includes "Share" and "Payment links" in the response. See
 
 * _As a seller_, if you issued an invoice to your client but realised a mistake, you can cancel it. Canceled invoices will show in the ["Voided" tab of the "Get paid" menu](https://app.request.finance/get-paid/sent?f=voided). \
   Only `open` and `accepted` invoices can be canceled.
-* _As a buyer_, you cannot cancel an invoice. Once a seller cancels an invoice, it will show up in the ["Rejected" tab of the "Get paid" menu](https://app.request.finance/pay/bills?f=voided).
+* _As a buyer_, you cannot cancel an invoice. Once a seller cancels an invoice, it will show up in the ["Voided" tab of the "Pay" menu](https://app.request.finance/pay/bills?f=voided).
 
 {% swagger method="post" path="/invoices/[id]/changes" baseUrl="https://api.request.finance" summary="Approve, reject or cancel an invoice" %}
 {% swagger-description %}
