@@ -841,3 +841,134 @@ Includes "Share" and "Payment links" in the response. See
 {% endswagger-response %}
 {% endswagger %}
 
+## Approving/Rejecting/Canceling an Invoice
+
+**Approving**:&#x20;
+
+* _As a buyer_, if you received an invoice from one of your supplier/contractors, you can approve it prior to paying. Approved invoices will show up in the ["Approved" tab of the "Pay" menu](https://app.request.finance/pay/bills?f=approved) in the Request Finance app and indicate that the invoice has been accepted by you and is ready for payment. \
+  Only `open` invoices can be approved.&#x20;
+* _As a seller_, you cannot approve an invoice. Once a buyer approves your invoice, it will show up in the ["Approved" tab of the "Get paid" menu](https://app.request.finance/get-paid/sent?f=approved).
+
+**Rejecting**
+
+* _As a buyer_, if you received an incorrect invoice from one of your supplier/contractors, you can reject it. Rejected invoices will show up in the ["Rejected" tab of the "Pay" menu](https://app.request.finance/pay/bills?f=rejected) in the Request Finance app and indicate that the invoice has been rejected by you and won't be paid. \
+  Only `open` and `accepted` invoices can be rejected.&#x20;
+* _As a seller_, you cannot reject an invoice. Once a buyer rejects your invoice, it will show up in the ["Rejected" tab of the "Get paid" menu](https://app.request.finance/get-paid/sent?f=rejected).
+
+**Canceling**:&#x20;
+
+* _As a seller_, if you issued an invoice to your client but realised a mistake, you can cancel it. Canceled invoices will show in the ["Voided" tab of the "Get paid" menu](https://app.request.finance/get-paid/sent?f=voided). \
+  Only `open` and `accepted` invoices can be canceled.
+* _As a buyer_, you cannot cancel an invoice. Once a seller cancels an invoice, it will show up in the ["Rejected" tab of the "Get paid" menu](https://app.request.finance/pay/bills?f=voided).
+
+{% swagger method="post" path="/invoices/[id]/changes" baseUrl="https://api.request.finance" summary="Approve, reject or cancel and invoice" %}
+{% swagger-description %}
+
+{% endswagger-description %}
+
+{% swagger-parameter in="path" name="id" required="true" type="String" %}
+ID of the invoice
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="type" required="true" type="String" %}
+The type of change. Use
+
+\
+
+
+"
+
+`accept`
+
+" to approve an invoice
+
+\
+
+
+"
+
+`reject`
+
+" to reject
+
+\
+
+
+"
+
+`cancel`
+
+" to cancel
+{% endswagger-parameter %}
+
+{% swagger-parameter in="body" name="input.note" type="String" required="true" %}
+Include a rejection reason. 
+
+\
+
+
+
+
+\
+
+
+Example: 
+
+\
+
+
+
+
+\
+
+
+
+
+`"input":`
+
+ 
+
+\
+
+
+`{`
+
+ 
+
+\
+
+
+`note: "Duplicate"`
+
+ 
+
+\
+
+
+`}`
+{% endswagger-parameter %}
+
+{% swagger-response status="200: OK" description="Example response when canceling" %}
+```json
+{
+    "id": "646d68bdf64d4a4839eafe25",
+    "requestId": "0196124706be086a302dfdff2831270120fdc2f5efc5bcf12e48e19082c68fe23c",
+    "actionType": "cancel",
+    "input": {},
+    "networkType": "test",
+    "chainName": "goerli",
+    "userId": "63f459c11727622c09b2932a",
+    "timestamp": "2023-05-24T01:30:37.811Z",
+    "status": "pending",
+    "sendNotification": false
+}
+```
+{% endswagger-response %}
+{% endswagger %}
+
+
+
+
+
+
+

@@ -27,7 +27,7 @@ Use\
 
 `format: "rnf_salary",`
 
-`version: "0.0.3",`
+`version: "0.0.3"`
 
 `}`
 
