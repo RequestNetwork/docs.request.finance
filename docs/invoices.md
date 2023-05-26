@@ -451,7 +451,7 @@ Using the `invoiceLinks.signUpAndPay` link, you can redirect your customers to a
 
 When your customers pay through this page using Request Finance, they can enjoy the convenience and security of our platform, which includes measures to prevent accidental double payments. Additionally, this payment method ensures that the invoice status is automatically updated, simplifying invoice tracking for both you and your customers.
 
-<figure><img src=".gitbook/assets/image.png" alt=""><figcaption><p>Sign up &#x26; pay page</p></figcaption></figure>
+<figure><img src=".gitbook/assets/image (1).png" alt=""><figcaption><p>Sign up &#x26; pay page</p></figcaption></figure>
 
 ## &#x20;Fetching an Invoice
 

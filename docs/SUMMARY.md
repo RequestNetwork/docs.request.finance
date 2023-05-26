@@ -5,5 +5,6 @@
 * [Testing](testing.md)
 * [Invoices](invoices.md)
 * [Payroll](salaries.md)
+* [Going Live](going-live.md)
 * [FAQ](faq.md)
 * [Bug Bounty Program](https://support.request.finance/additional-resources/request-finance-bug-bounty-program)

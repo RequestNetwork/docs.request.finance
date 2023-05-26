@@ -4,6 +4,10 @@ To test the Request Finance API with your application, you can use your “Test�
 
 Invoices that you create using your “Test” API key will be persisted on the Goerli Testnet (a testing network for Ethereum). You can see and interact with them in our sandbox: [https://baguette-app.request.finance/](https://baguette-app.request.finance/). Use your existing credentials to access your sandbox account.&#x20;
 
+{% hint style="info" %}
+API keys are not recommended for a live application and will be deprecated. Follow the steps in [going-live.md](going-live.md "mention") instead.&#x20;
+{% endhint %}
+
 ## Payments
 
 To test paying an invoice or a payroll payment without spending real tokens, you can use ETH on Goerli Testnet. You can get some using a faucet online and your wallet address.&#x20;
