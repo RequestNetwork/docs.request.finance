@@ -61,7 +61,7 @@ The following rate limits apply globally:&#x20;
 
 * Unauthenticated users: 500 calls / hour
 * Authenticated users: 5000 calls / hour
-* Applications using [OAuth authentication](https://docs.request.finance/getting-started#authentication): 15000 calls / hour
+* Applications using [OAuth authentication](going-live.md): 15000 calls / hour
 
 Additionally, there are some endpoints that have stricter rate limiting. The API always returns the following information in the headers:&#x20;
 
