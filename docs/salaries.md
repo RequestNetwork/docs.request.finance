@@ -245,7 +245,7 @@ To check the status of a salary payment and understand if it has been paid, plea
 
 <summary>Example Response</summary>
 
-````json
+```json
 {
     "id": "647855dc484f371e737cf593",
     "paymentCurrency": "USDC-matic",
@@ -314,9 +314,6 @@ To check the status of a salary payment and understand if it has been paid, plea
     "events": []
 }
 ```
-````
-
-
 
 </details>
 
