@@ -77,6 +77,10 @@ Payroll amount.
 Payment number. Has to be unique for each payroll payment.
 {% endswagger-parameter %}
 
+{% swagger-parameter in="body" name="buyerInfo.email" required="true" %}
+Email of the employer.
+{% endswagger-parameter %}
+
 {% swagger-parameter in="body" name="sellerInfo.email" type="String" required="true" %}
 Email of the employee who receives the payment.
 {% endswagger-parameter %}
@@ -118,13 +122,17 @@ Monthly on the 14th of each month, starting 14th of March 2023.&#x20;
 {% swagger-response status="201: Created" description="Off-chain payment successfully created" %}
 ```json
 {
-    "id": "63f313638c008a5de553ca0d",
+    "id": "647855dc484f371e737cf593",
     "paymentCurrency": "USDC-matic",
+    "buyerInfo": {
+        "email": "joe.bloggs@abc-unicorn.com",
+        "userId": "647804be4e8042efbde7a725"
+    },
     "sellerInfo": {
         "email": "william.dean@abc-unicorn.com",
         "firstName": "William",
         "lastName": "Dean",
-        "userId": "63c4eeed02a7c1bb872cb2a1"
+        "userId": "63c4eeed02a7c1bb872cb3a1"
     },
     "paymentAddress": "0x4886E85E192cdBC81d42D89256a81dAb990CDD74",
     "invoiceItems": [
@@ -135,41 +143,23 @@ Monthly on the 14th of each month, starting 14th of March 2023.&#x20;
             },
             "currency": "USD",
             "quantity": 1,
-            "unitPrice": "100000",
+            "unitPrice": "100002",
             "name": "Salary"
         }
     ],
     "paymentTerms": {
-        "dueDate": "2022-12-28T21:59:59.999Z"
+        "dueDate": "2023-06-01T14:59:59.999Z"
     },
+    "recurringRule": "DTSTART:20230601T074619Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;COUNT=3",
     "invoiceNumber": "1",
-    "creationDate": "2022-12-22T14:38:16.916Z",
+    "creationDate": "2023-05-31T14:59:59.999Z",
     "meta": {
         "format": "rnf_salary",
         "version": "0.0.3"
     },
-    "buyerInfo": {
-        "email": "oliver.wilson@abc-unicorn.com",
-        "address": {
-            "streetAddress": "4933 Birchwood Road",
-            "extendedAddress": "",
-            "city": "London",
-            "postalCode": "ABC123",
-            "region": "London",
-            "country": "GB"
-            "locality": "",
-            "country-name": "",
-            "extended-address": "",
-            "postal-code": "",
-            "street-address": ""
-        },
-        "businessName": "ABC Unicorn",
-        "firstName": "Oliver",
-        "lastName": "Wilson",
-        "taxRegistration": "",
-        "userId": "63882ad2b52be3f3d751f668"
-    },
-    "createdBy": "63882ad2b52be3f3d751f668",
+    "nextOccurrence": "2023-07-01T07:46:19.000Z",
+    "status": "scheduled",
+    "createdBy": "647804be4e8042efbde7a725",
     "paymentOptions": [
         {
             "type": "wallet",
@@ -185,7 +175,15 @@ Monthly on the 14th of each month, starting 14th of March 2023.&#x20;
         }
     ],
     "type": "live",
-    "role": "buyer"
+    "miscellaneous": {
+        "notifications": {
+            "creation": true
+        }
+    },
+    "role": "buyer",
+    "tags": [
+       "my_tag"
+   ]
 }
 ```
 {% endswagger-response %}
@@ -193,38 +191,41 @@ Monthly on the 14th of each month, starting 14th of March 2023.&#x20;
 
 #### **Example Request**
 
-Let’s assume you want to pay your employee, William Dean (william.dean@abc-unicorn.com), $1,000.00 using USDC on Polygon.
+Let’s assume you want to pay your employee, William Dean (william.dean@abc-unicorn.com), $1,000.00 using USDC on Polygon. Additionally, the salary should be created every month for the next three months.
 
 To create a salary payment like this, you would pass the following body with the request:
 
-```json
-{
-  "meta": {
+<pre class="language-json"><code class="lang-json"><strong>{
+</strong>  "meta": {
     "format": "rnf_salary",
     "version": "0.0.3"
   },
-  "creationDate": "2022-12-22T14:38:16.916Z",
+  "creationDate": "2023-05-31T14:59:59.999Z",
   "invoiceItems": [
     {
       "currency": "USD",
       "name": "Salary",
       "quantity": 1,
-      "unitPrice": "100000"
+      "unitPrice": "100002"
     }
   ],
   "invoiceNumber": "1",
+  "buyerInfo": {
+    "email": "joe.bloggs@abc-unicorn.com"
+  },
   "sellerInfo": {
     "email": "william.dean@abc-unicorn.com",
     "firstName": "William",
     "lastName": "Dean"
   },
   "paymentTerms": {
-    "dueDate": "2022-12-28T21:59:59.999Z"
+    "dueDate": "2023-06-01T14:59:59.999Z"
   },
   "paymentAddress": "0x4886E85E192cdBC81d42D89256a81dAb990CDD74",
-  "paymentCurrency": "USDC-matic"
+  "paymentCurrency": "USDC-matic",
+  "recurringRule": "DTSTART:20230601T074619Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;COUNT=3"
 }
-```
+</code></pre>
 
 As with invoices, in the JSON response, you will get an `id` field. Please save it in a variable or in your database. You will need it to convert the payment into an on-chain request in the next section.
 
@@ -239,3 +240,87 @@ The only way to currently pay an on-chain salary payment is via the Request Fina
 ## Fetching a Salary Payment
 
 To check the status of a salary payment and understand if it has been paid, please use the same [endpoint that is used for invoices](invoices.md#fetching-an-invoice). Replace `[id]` with the `requestId` of the Request (recommended), or the `invoiceId`.
+
+<details>
+
+<summary>Example Response</summary>
+
+````json
+{
+    "id": "647855dc484f371e737cf593",
+    "paymentCurrency": "USDC-matic",
+    "buyerInfo": {
+        "email": "joe.bloggs@abc-unicorn.com",
+        "userId": "647804be4e8042efbde7a735"
+    },
+    "sellerInfo": {
+        "email": "william.dean@abc-unicorn.com",
+        "firstName": "William",
+        "lastName": "Dean",
+        "userId": "63c4eeed02a7c1bb872cb3a1"
+    },
+    "paymentAddress": "0x4886E85E192cdBC81d42D89256a81dAb990CDD74",
+    "invoiceItems": [
+        {
+            "tax": {
+                "type": "fixed",
+                "amount": "0"
+            },
+            "currency": "USD",
+            "quantity": 1,
+            "unitPrice": "100002",
+            "name": "Salary"
+        }
+    ],
+    "paymentTerms": {
+        "dueDate": "2023-06-01T14:59:59.999Z"
+    },
+    "recurringRule": "DTSTART:20230601T074619Z\nRRULE:FREQ=MONTHLY;INTERVAL=1;COUNT=3",
+    "invoiceNumber": "1",
+    "creationDate": "2023-05-31T14:59:59.999Z",
+    "meta": {
+        "format": "rnf_salary",
+        "version": "0.0.3"
+    },
+    "nextOccurrence": "2023-07-01T07:46:19.000Z",
+    "status": "scheduled",
+    "createdBy": "647804be4e8042efbde7a735",
+    "paymentOptions": [
+        {
+            "type": "wallet",
+            "value": {
+                "currencies": [
+                    "USDC-matic"
+                ],
+                "paymentInformation": {
+                    "paymentAddress": "0x4886E85E192cdBC81d42D89256a81dAb990CDD74",
+                    "chain": "matic"
+                }
+            }
+        }
+    ],
+    "type": "live",
+    "miscellaneous": {
+        "builderId": null,
+        "createdWith": null,
+        "logoUrl": null,
+        "variant": null,
+        "notifications": {
+            "creation": true
+        }
+    },
+    "role": "buyer",
+    "tags": [],
+    "events": []
+}
+```
+````
+
+
+
+</details>
+
+## Listing Salary Payments
+
+To list salaries, use [LIST invoices](invoices.md#list-invoices). Make sure to filter for salaries payments in your request; \
+`invoices?variant=rnf_salary`.
