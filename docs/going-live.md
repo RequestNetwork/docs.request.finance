@@ -20,8 +20,6 @@ fetch("https://api.request.finance/invoices", {
 ```
 {% endcode %}
 
-You can find more information on Request Finance API Authentication with OAuth [here](https://docs.google.com/document/d/1kVoq-IJq4\_obG82vRuNaAvoh4vZBkaMiH-q6NYlS1DU/edit?usp=sharing).&#x20;
-
 ## Optional: Sending Emails
 
 By default, we are not sending notifications for invoices created via API. If you want us to send automated emails to your clients (for example, to notify them of a new invoice), you need to share your Client ID with the Request Finance team.&#x20;
