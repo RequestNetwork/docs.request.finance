@@ -24,7 +24,7 @@ The Request Finance API is the backend of the Request Finance application. It is
 
 ### **Where are invoices stored?**&#x20;
 
-Invoices are stored on the blockchain: data is stored on IPFS, and the document hash is persisted on-chain – [more info on this](https://docs.request.network/docs/guides/1-protocol/4-storage).
+Invoices are stored on the blockchain: data is stored on IPFS, and the document hash is persisted on-chain – [more info on this](https://docs.request.network/learn-request-network/introduction-to-the-request-protocol/storage).
 
 * Invoices created with the production environment are persisted on the Gnosis Chain.
 * Invoices created on the sandbox environment are persisted on Goerli.
@@ -37,7 +37,7 @@ Invoices are what you will be manipulating with the Request Finance API. Invoice
 
 The Request Finance API adds a layer of automation on top of simple requests. Whenever an invoice is created, it is possible to have an email sent to the designated payer. The invoice issuer (payee) can also get notified as soon as the corresponding request has been paid (please [get in touch with us](https://www.request.finance/contact-us) if you need access to this API feature).
 
-Knowing if a request has been paid [is not trivial](https://docs.request.network/docs/guides/2-request-client/1-payment-networks). But invoices have an additional property: a status; so knowing if the underlying request has been paid is as easy as reading this property. Invoices can also be scheduled to create occurrences at regular intervals. This is useful to manage collaborators' salaries.
+Knowing if a request has been paid [is not trivial](https://docs.request.network/learn-request-network/guides/detect-a-payment). But invoices have an additional property: a status; so knowing if the underlying request has been paid is as easy as reading this property. Invoices can also be scheduled to create occurrences at regular intervals. This is useful to manage collaborators' salaries.
 
 To summarize:
 
@@ -53,7 +53,7 @@ With the Request Finance API, everything that is stored on-chain is encrypted on
 
 Although we technically have access to invoice data, we will never use or share this data.&#x20;
 
-If end-to-end encryption is paramount for your usage, we recommend you interact directly with the Request Network protocol through the[ Request Client](https://docs.request.network/docs/guides/2-request-client/0-intro) instead of using the Request Finance API. You won't be able however to interact with invoices stored on[ app.request.finance](https://app.request.finance).
+If end-to-end encryption is paramount for your usage, we recommend you interact directly with the Request Network protocol through the [Request Client](https://docs.request.network/get-started/request-network-client-introduction) instead of using the Request Finance API. You won't be able however to interact with invoices stored on[ app.request.finance](https://app.request.finance).
 
 ### **What rate limits do you have on the API?**&#x20;
 
