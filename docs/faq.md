@@ -70,3 +70,8 @@ Additionally, there are some endpoints that have stricter rate limiting. The API
 * `X-Rate-Limit-Reset`: the remaining time window before the rate limit resets, in seconds
 
 We also send a `Retry-After` in the header on blocked requests to let you know when to call then endpoint again.&#x20;
+
+### **Which currencies and networks do you support?**&#x20;
+
+* The list of currencies accepted by our API is here: [https://api.request.finance/currency](https://api.request.finance/currency)
+* The network list is available here: [https://api.request.finance/currency/chains](https://api.request.finance/currency/chains)
