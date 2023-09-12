@@ -75,3 +75,51 @@ We also send a `Retry-After` in the header on blocked requests to let you know w
 
 * The list of currencies accepted by our API is here: [https://api.request.finance/currency](https://api.request.finance/currency)
 * The network list is available here: [https://api.request.finance/currency/chains](https://api.request.finance/currency/chains)
+
+### **I am integrating the Request Network. Can I get access to users' data on Request Finance?**
+
+Teams integrating Request Network can build Request Finance-based POCs. To do this, you need to know your public key and add a snippet to invite users to share a request with you (see below).&#x20;
+
+<details>
+
+<summary>Public Key</summary>
+
+```javascript
+const hdkey = require('ethereumjs-wallet/hdkey');
+const Wallet = require('ethereumjs-wallet').default;
+const privateKey = hdkey.fromMasterSeed('random')._hdkey._privateKey;
+const wallet = Wallet.fromPrivateKey(privateKey);
+console.log(wallet.getPublicKeyString());
+```
+
+Source: [https://ethereum.stackexchange.com/questions/11253/ethereumjs-how-to-get-public-key-from-private-key](https://ethereum.stackexchange.com/questions/11253/ethereumjs-how-to-get-public-key-from-private-key)
+
+</details>
+
+<details>
+
+<summary>Snippet</summary>
+
+```javascript
+const BUILDER_KEY = "026c0594b192ebfda22706bff76ee5fb34a65fe93fde779ade3dfafbf77375cd2e";
+const WEBHOOK_URL = "http://localhost:3001/";
+window.open(
+  `http://baguette-app.request.finance/add-stakeholder?stakeholder-public-key=${BUILDER_KEY}&webhook-url=${WEBHOOK_URL}`,
+  null,
+  "popup,width=530,height=760,left=100,top=100"
+);
+```
+
+</details>
+
+#### Webhook
+
+Once the transaction is persisted, a POST query is sent to the webhook URL. The JSON payload contains the requestId. It only works if the user keeps the page open during the process.
+
+In case of an error, the call is attempted 2 more times.
+
+#### UX
+
+Here's what it looks like to the end user of your application:
+
+![](<.gitbook/assets/Adding a stakeholder - Step 1.png>)<img src=".gitbook/assets/Adding a stakeholder - Step 2 (1).png" alt="" data-size="original">
