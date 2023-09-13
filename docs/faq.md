@@ -104,7 +104,7 @@ Source: [https://ethereum.stackexchange.com/questions/11253/ethereumjs-how-to-ge
 const BUILDER_KEY = "026c0594b192ebfda22706bff76ee5fb34a65fe93fde779ade3dfafbf77375cd2e";
 const WEBHOOK_URL = "http://localhost:3001/";
 window.open(
-  `http://baguette-app.request.finance/add-stakeholder?stakeholder-public-key=${BUILDER_KEY}&webhook-url=${WEBHOOK_URL}`,
+  `http://app.request.finance/add-stakeholder?stakeholder-public-key=${BUILDER_KEY}&webhook-url=${WEBHOOK_URL}`,
   null,
   "popup,width=530,height=760,left=100,top=100"
 );
