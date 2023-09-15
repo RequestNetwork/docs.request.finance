@@ -4,7 +4,7 @@ To test the Request Finance API with your application, you can use your “Test�
 
 Invoices that you create using your “Test” API key will be persisted on the Goerli Testnet (a testing network for Ethereum). You can see and interact with them in our sandbox: [https://baguette-app.request.finance/](https://baguette-app.request.finance/). Use your existing credentials to access your sandbox account.&#x20;
 
-{% hint style="info" %}
+{% hint style="warning" %}
 API keys are not recommended for a live application and will be deprecated. Follow the steps in [going-live.md](going-live.md "mention") instead.&#x20;
 {% endhint %}
 
@@ -16,9 +16,9 @@ Make sure to create invoices and payroll payments with ETH on Goerli as a paymen
 
 Since the account that issued the invoice cannot be the account that pays the invoice, you will need to create another Request Finance account for the buyer role.
 
-#### **Token Alternative**&#x20;
+#### **Test ERC20 tokens**&#x20;
 
-If you have trouble getting a lot of ETH to test with, you can also set up invoices and payroll payments using FAU on Goerli. You can mint some FAU tokens at [https://erc20faucet.com/](https://erc20faucet.com/).
+To test stablecoin payments on Goerli, we use FAU as a DAI-pegged testnet token. You can mint some FAU tokens at [https://erc20faucet.com/](https://erc20faucet.com/).
 
 ## Postman Collection
 
