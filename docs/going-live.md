@@ -1,5 +1,11 @@
 # Going Live
 
+## Prerequisite
+
+Before going live, make sure you have read the page about [organizations.md](organizations.md "mention"). It's important to handle the case where your users' data resides in an organization vs. their personal account.
+
+## Authentication
+
 To go live with your application, you need to setup the OAuth authentication instead of the API keys, please follow these steps:&#x20;
 
 1. Your integration needs to be whitelisted by the Request Finance team; get in touch [here](mailto:support@request.finance) or via the Intercom chat. Be sure to mention the email of the account that will make the queries. We advise setting up an account just for the integration, an account that does not send or receive invoices, with a strong password that can be archived safely.

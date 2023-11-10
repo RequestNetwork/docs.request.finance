@@ -29,21 +29,9 @@ Default value:\
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="creationDate" type="String" %}
-ISO-8601 representation of the invoice’s creation date.
-
+ISO-8601 representation of the invoice’s creation date.\
 \
-
-
-
-
-\
-
-
-Default value:
-
-\
-
-
+Default value:\
 Current date
 {% endswagger-parameter %}
 
@@ -60,44 +48,16 @@ Quantity of the product/service that was provided.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="invoiceItems.tax.type" type="String" %}
-Can be “fixed” or “percentage”. Required if tax.amount is sent.
-
+Can be “fixed” or “percentage”. Required if tax.amount is sent.\
 \
-
-
-
-
-\
-
-
-Default value:
-
-\
-
-
-
-
+Default value:\
 `fixed`
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="invoiceItems.tax.amount" type="Decimal" %}
-Amount of the tax. Required if tax.type is sent.
-
+Amount of the tax. Required if tax.type is sent.\
 \
-
-
-
-
-\
-
-
-Default value:
-
-\
-
-
-
-
+Default value:\
 `0`
 {% endswagger-parameter %}
 
@@ -158,11 +118,7 @@ Address which will receive the payment.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="paymentCurrency" required="true" type="String" %}
-Currency in which the invoice can be paid. Please review our 
-
-[Currency API](https://api.request.finance/currency/list/invoicing)
-
- for a list of available currencies.
+Currency in which the invoice can be paid. Please review our [Currency API](https://api.request.finance/currency/list/invoicing) for a list of available currencies.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="tags" type="Array of strings" %}
@@ -467,11 +423,7 @@ ID of the request or invoice
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="withLinks=true" type="String" %}
-Includes "Share" and "Payment links" in the response. See 
-
-[https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
-
-
+Includes "Share" and "Payment links" in the response. See [https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
@@ -606,41 +558,21 @@ Fetch a list of the user's invoices. Use the `creationDateRange` parameter to fi
 {% endswagger-description %}
 
 {% swagger-parameter in="query" name="creationDateRange" type="String" %}
-Filter by creation date (ISO 8601 format). 
-
-\
-
-
+Filter by creation date (ISO 8601 format). \
 Example: creationDateRange={"from":"2022-06-24T00:00:00.000Z","to":"2022-08-22T00:00:00.000Z"}
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="search" type="String" %}
-Filter by transaction hash, invoice number, company, and other fields. Example: search=0xef... 
+Filter by transaction hash, invoice number, company, and other fields. Example: search=0xef...&#x20;
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="variant" type="String" %}
-Filter by invoice format. Use 
-
-`rnf_invoice`
-
- to filter for invoices and 
-
-`rnf_salary`
-
- to filter for salaries. 
-
-\
-
-
+Filter by invoice format. Use `rnf_invoice` to filter for invoices and `rnf_salary` to filter for salaries. \
 Example: variant=meta.format
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" type="String" name="withLinks=true" %}
-Includes "Share" and "Payment links" in the response. See 
-
-[https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
-
-
+Includes "Share" and "Payment links" in the response. See [https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
@@ -871,80 +803,20 @@ ID of the invoice
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="type" required="true" type="String" %}
-The type of change. Use
-
-\
-
-
-"
-
-`accept`
-
-" to approve an invoice
-
-\
-
-
-"
-
-`reject`
-
-" to reject
-
-\
-
-
-"
-
-`cancel`
-
-" to cancel
+The type of change. Use\
+"`accept`" to approve an invoice\
+"`reject`" to reject\
+"`cancel`" to cancel
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="input.note" type="String" required="true" %}
-Required when rejecting an invoice. Include a rejection reason. 
-
+Required when rejecting an invoice. Include a rejection reason. \
 \
-
-
-
-
+Example: \
 \
-
-
-Example: 
-
-\
-
-
-
-
-\
-
-
-
-
-`"input":`
-
- 
-
-\
-
-
-`{`
-
- 
-
-\
-
-
-`note: "Duplicate"`
-
- 
-
-\
-
-
+`"input":` \
+`{` \
+`note: "Duplicate"` \
 `}`
 {% endswagger-parameter %}
 
