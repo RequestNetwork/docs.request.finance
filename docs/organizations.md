@@ -45,8 +45,9 @@ When querying Request Finance's API with a user's OAuth token, you will retrieve
 
 To access data from an Organization this user belongs to, add the following header to each API call:
 
-<pre class="language-http"><code class="lang-http"><strong>X-Organization: [ID]
-</strong></code></pre>
+```http
+X-Organization: [ID]
+```
 
 Use the [#listing-organizations](organizations.md#listing-organizations "mention") API endpoint to retrieve the proper organization ID. For instance:
 
