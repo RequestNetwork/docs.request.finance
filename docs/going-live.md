@@ -22,7 +22,7 @@ To go live with your application, you need to setup the OAuth authentication ins
     ```
 
     Other scopes are also available, like `user:read`, see [#list-organizations-the-user-belongs-to](organizations.md#list-organizations-the-user-belongs-to "mention").
-5. Save both the access-token and refresh-token. Authenticate your API calls using the access-token and reuse it until it expires (30 days). After it expires, use the refresh-token to ask for a new access-token. Here is an example of how to use the access-token with NodeJS:
+5. Save both the access-token and refresh-token. Authenticate your API calls using the access-token and reuse it until it expires (24 hours). After it expires, use the refresh-token to ask for a new access-token. Here is an example of how to use the access-token with NodeJS:
 
 {% code fullWidth="false" %}
 ```json
