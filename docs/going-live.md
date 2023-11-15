@@ -12,8 +12,17 @@ To go live with your application, you need to setup the OAuth authentication ins
 2.  Create an app in your Request Finance account on the ["Developers" menu](https://app.request.finance/developers/apps).
 
     <figure><img src=".gitbook/assets/image (2).png" alt=""><figcaption></figcaption></figure>
-3. Retrieve an OAuth token using the Client Secret and Client ID provided. We suggest using one of Auth0's libraries to handle the heavy lifting: [https://auth0.com/docs/quickstart/webapp](https://auth0.com/docs/quickstart/webapp). Choose the package corresponding to your language under "Regular Web App".
-4. Save this token and if possible reuse it until it expires (30 days). Authenticate your API calls using this token. Here is an example of how to use it with NodeJS:
+3. Retrieve an OAuth access-token and refresh-token for your user by following the [Authorization Code Flow](https://auth0.com/docs/get-started/authentication-and-authorization-flow/authorization-code-flow), with the provided Client Secret and Client ID. You can use any OAuth2 or OpenID-compatible library to do the heavy lifting. Auth0 also provides its [own libraries here](https://auth0.com/docs/quickstart/webapp), choose any package corresponding to your language under "Regular Web App". For reference, we developed two implementation examples, one using NextJS and one using ExpressJS, available on this [demo repository](https://github.com/RequestNetwork/demo-api).
+4.  To configure the OAuth connection, you need to use the following parameters:
+
+    ```
+    URL: https://auth.request.finance
+    Audience: accounts
+    Scope: openid profile email offline_access
+    ```
+
+    Other scopes are also available, like `user:read`, see [#list-organizations-the-user-belongs-to](organizations.md#list-organizations-the-user-belongs-to "mention").
+5. Save both the access-token and refresh-token. Authenticate your API calls using the access-token and reuse it until it expires (30 days). After it expires, use the refresh-token to ask for a new access-token. Here is an example of how to use the access-token with NodeJS:
 
 {% code fullWidth="false" %}
 ```json
