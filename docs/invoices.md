@@ -550,29 +550,48 @@ When the value matches `rejected` or `canceled` you can also stop polling: it me
 
 ## Listing Invoices
 
-Fetch a list of the user's invoices. Use the `creationDateRange` parameter to filter for a invoices created in a date range. Other filters are listed below for your convenience, for example the `search=tx_hash` filter is a useful filter to use when presenting the user with a list of invoices associated with a transaction hash.&#x20;
+Fetch a list of the user's invoices. Use the `creationDateRange` parameter to filter for invoices created in a date range. Other filters are listed below for your convenience. For example, the `search=tx_hash` filter is a valuable filter to use when presenting the user with a list of invoices associated with a transaction hash.&#x20;
 
 {% swagger method="get" path="/invoices" baseUrl="https://api.request.finance" summary="List invoices" %}
 {% swagger-description %}
 
 {% endswagger-description %}
 
-{% swagger-parameter in="query" name="creationDateRange" type="String" %}
-Filter by creation date (ISO 8601 format). \
-Example: creationDateRange={"from":"2022-06-24T00:00:00.000Z","to":"2022-08-22T00:00:00.000Z"}
+{% swagger-parameter in="query" name="take" type="Integer" %}
+How many items should be returned per page. Default: `25`. Maximum: `100`.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="skip" type="Integer" %}
+Use this filter to paginate the results (= skip to a certain page number). Default: `0`.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="search" type="String" %}
-Filter by transaction hash, invoice number, company, and other fields. Example: search=0xef...&#x20;
+Filter by transaction hash, invoice number, company, and other fields. Example: `&search=0xef...`&#x20;
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="status" type="String[]" %}
+Filter by invoice status. Available statuses are: `draft`, `pending`, `open`, `paid`, `declaredPaid`, `accepted`, `canceled`, `rejected`, `scheduled`, `overdue`. Example: `&status[]=draft`
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="creationDateRange" type="String" %}
+Filter by creation date (ISO 8601 format). \
+Example: `&creationDateRange={"from":"2022-06-24T00:00:00.000Z","to":"2022-08-22T00:00:00.000Z"}`
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="variant" type="String" %}
-Filter by invoice format. Use `rnf_invoice` to filter for invoices and `rnf_salary` to filter for salaries. \
-Example: variant=meta.format
+Filter by invoice format. Use `rnf_invoice` to filter for invoices and `rnf_salary` to filter for salaries.&#x20;
 {% endswagger-parameter %}
 
-{% swagger-parameter in="query" type="String" name="withLinks=true" %}
-Includes "Share" and "Payment links" in the response. See [https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
+{% swagger-parameter in="query" name="filterBy" type="String" %}
+This filter accepts two values: `sent` or `received` ; returning only invoices sent or received by the user.
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" type="Boolean" name="withLinks" %}
+Include the "Share" and "Payment links" in the response. Default: `false`. See [https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid](https://docs.request.finance/invoices#sharing-your-invoice-and-getting-paid)
+{% endswagger-parameter %}
+
+{% swagger-parameter in="query" name="format" type="String" %}
+You can set the query parameter`&format=paginated` which will return addtional information like the total number of results with and without filters, as well as the number of results per invoice status.
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
