@@ -35,21 +35,9 @@ To create a payroll payment
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="creationDate" type="String" %}
-ISO-8601 representation of the payment’s creation date.
-
+ISO-8601 representation of the payment’s creation date.\
 \
-
-
-
-
-\
-
-
-Default value:
-
-\
-
-
+Default value:\
 Current date
 {% endswagger-parameter %}
 
@@ -62,11 +50,7 @@ Name of the salary, bonus (e.g. Salary - February 2023).
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="invoiceItems.quantity" type="Decimal" required="true" %}
-Quantity. Use 
-
-`1`
-
- for payroll payments.
+Quantity. Use `1` for payroll payments.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="invoiceItems.unitPrice" type="Integer" required="true" %}
@@ -102,11 +86,7 @@ Address which will receive the payment.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" name="paymentCurrency" required="true" type="String" %}
-Currency in which the payroll payment can be paid. Please review our 
-
-[Currency API](https://api.request.finance/currency/list/invoicing)
-
- for a list of available currencies.
+Currency in which the payroll payment can be paid. Please review our [Currency API](https://api.request.finance/currency/list/invoicing) for a list of available currencies.
 {% endswagger-parameter %}
 
 {% swagger-parameter in="body" type="String" name="recurringRule" %}

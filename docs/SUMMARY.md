@@ -8,5 +8,5 @@
 * [Organizations](organizations.md)
 * [Going Live](going-live.md)
 * [FAQ](faq.md)
-* [Bug Bounty Program](https://support.request.finance/additional-resources/request-finance-bug-bounty-program)
+* [Bug Bounty Program](https://help.request.finance/en/articles/8623679-bug-bounty-program-at-request)
 * [Accept Crypto & Fiat in your E-Commerce Shop](https://requestfinance.typeform.com/e-commerce)

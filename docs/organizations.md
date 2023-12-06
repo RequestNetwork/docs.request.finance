@@ -1,6 +1,6 @@
 # Organizations
 
-Users can share their personal account data by inviting team members and assigning them particular roles (Admin, Finance Manager, Accountant, and Approver). Each role comes with specific permissions, which you can find [in our FAQ](https://support.request.finance/essentials/faq#team).
+Users can share their personal account data by inviting team members and assigning them particular roles (Admin, Finance Manager, Accountant, and Approver). Each role comes with specific permissions, which you can find [in our FAQ](https://help.request.finance/en/articles/8622864-what-roles-are-available).
 
 The user holding the account's data is called the **organization owner** and has the same set of permissions as any other admin. The owner of an organization cannot change by design.
 
@@ -41,7 +41,7 @@ The following endpoint retrieves the list of organizations a user belongs to. Th
 
 ## Accessing an Organization's Data
 
-When querying Request Finance's API with a user's OAuth token, you will retrieve the user's personal account data.&#x20;
+When querying Request Finance's API with a user's OAuth token, you will retrieve the user's personal account data.
 
 To access data from an Organization this user belongs to, add the following header to each API call:
 
