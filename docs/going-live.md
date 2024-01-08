@@ -38,3 +38,12 @@ fetch("https://api.request.finance/invoices", {
 ## Optional: Transactional Emails
 
 By default, we don't send transactional notifications for invoices created via API. If your users create invoices through your integration, you probably want issuers to be alerted of new invoices, and other transactional emails to be sent. In such case, please get in touch [here](mailto:support@request.finance) or via the Intercom chat, and share your Client ID with the Request Finance team.&#x20;
+
+
+## Troubleshooting
+
+### User does not have the right scope
+
+If you are missing a scope for a given user (this can be verified by checking the issued `access_token` in https://jwt.io), you can add `prompt=consent` to the authorization URL to force updating the allowed scopes. 
+
+For instance, if you cannot get a `refresh_token` for a specific user, that user might miss the `offline_access` scope.
