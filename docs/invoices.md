@@ -591,7 +591,7 @@ Include the "Share" and "Payment links" in the response. Default: `false`. See [
 {% endswagger-parameter %}
 
 {% swagger-parameter in="query" name="format" type="String" %}
-You can set the query parameter`&format=paginated` which will return addtional information like the total number of results with and without filters, as well as the number of results per invoice status.
+You can set the query parameter`&format=paginated` which will return additional information like the total number of results with and without filters, as well as the number of results per invoice status.
 {% endswagger-parameter %}
 
 {% swagger-response status="200: OK" description="" %}
