@@ -30,7 +30,7 @@ Replace API keys with the more secure OAuth authentication to go live with your 
 ```json
 fetch("https://api.request.finance/invoices", {
     headers: {
-      Authorization: Bearer ${accessToken},
+      Authorization: `Bearer ${accessToken}`,
       "X-Network": "live",
     },
   })
